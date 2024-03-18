@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Video Search</title>
+    <link rel='stylesheet' href="{{ url_for('static', filename="css/search.css") }}">
+</head>
+<body>
+    <div class="container">
+        <ul class="dropdown">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+        <div class="input">
+            <form method="post" action="{{ url_for('search') }}">
+                <input class='enter' type="text" name="query" placeholder="Search for a video....." required>
+                <input class ="search_btn" type="submit" value="Search">
+            </form>
+        </div>
+        <section class="section">
+            {% for video in videos %} 
+                <div class="video-item">
+                    <iframe width="560" height="315" src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                   
+                    <h4 class="h1"> {{ video.title }} </h4>
+                    <p><a href="{{ video.url }}" target="_blank">Go to youtube</a> </p>
+                </div>
+            {% endfor %}
+        </section>
+    </div>
+</body>
+</html>

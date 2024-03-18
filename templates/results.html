@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Search results</title>
+    </head>
+    <body>
+        <h2>Search Results</h2>
+        {% for video in videos %}
+            <h4> {{ video.title }} </h4> 
+            <img src="{{ video.thumbnail }}" alt="{{ video.title }}"></img>
+            <p><a href="{{ video.url }}" target="_blank">Watch Video</a> </p>
+            <p>{{ video.description }} </p>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Musical</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    </head>
+    <body>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+        <img src="/static/images/musicall.png" alt="Musical logo">
+        <section>
+            <h1>Welcome to <em>Musical</em></h1>
+            <p>Where music is life, your gateway to your greatest musical exploration</p>
+            <button><a href="{{ url_for('search') }}">Get Started</a></button>
+        </section>
+        <footer>
+            <p>Site by: Uko Uwatt</p>
+            <p>ALX Project</p>
+        </footer>
+    </body>
+</html>
