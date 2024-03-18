@@ -13,7 +13,7 @@ def index():
 @app.route('/index/search', methods=['GET', 'POST'], strict_slashes=False)
 def search():
     from googleapiclient.discovery import build  # Add this import statement
-    api_key = "AIzaSyAaUOV1XCdm7hGf_Z4Gns9eFmAJva8HBqc"  # Replace with your actual API key
+    api_key = "API key"  # Replace with your actual API key
     youtube = build('youtube', 'v3', developerKey=api_key)
     
     video_info = []
