@@ -1,6 +1,7 @@
-#!/usr/bin/env python3
+# Description: This file is the main file for the Flask application. It will handle the routing and rendering of the web pages.
 from flask import Flask, render_template, request
 from googleapiclient.discovery import build
+from model import *
 
 app = Flask(__name__)
 
@@ -12,33 +13,7 @@ def index():
 
 @app.route('/index/search', methods=['GET', 'POST'], strict_slashes=False)
 def search():
-    from googleapiclient.discovery import build  # Add this import statement
-    api_key = "API key"  # Replace with your actual API key
-    youtube = build('youtube', 'v3', developerKey=api_key)
-    
-    video_info = []
-    if request.method == 'POST':
-        try:
-            search_query = request.form.get('query')
-            response = youtube.search().list(
-                q=search_query,
-                part='snippet',
-                type='video',
-                maxResults=10
-            ).execute()
-
-            for item in response.get('items', []):
-                title = item.get('snippet', {}).get('title', '')
-                description = item.get('snippet', {}).get('description', '')
-                thumbnails = item.get('snippet', {}).get('thumbnails', {})
-                thumbnail_url = thumbnails.get('default', {}).get('url', '')
-                video_id = item.get('id', {}).get('videoId', '')
-                video_url = f'https://www.youtube.com/embed/{video_id}'
-                video_info.append({'title': title, 'description': description, 
-                                   'thumbnail': thumbnail_url,
-                                   'url': video_url, 'video_id': video_id})
-        except Exception as e:
-            return f"An error occurred: {str(e)}"
+    video_info = query_youtube()
 
     return render_template('search.html', videos=video_info)
 
