@@ -2,6 +2,8 @@
 from flask import Flask, render_template, request
 from googleapiclient.discovery import build
 from model import *
+import os
+
 
 app = Flask(__name__)
 
@@ -17,10 +19,13 @@ def search():
 
     return render_template('search.html', videos=video_info)
 
-    
+@app.route('/about', strict_slashes=False)
+def about():
+    """info about the web app"""
+    return render_template('about.html')
     
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port='5000')
+    app.run(host='127.0.0.1', port='5000',debug=False)
 
 

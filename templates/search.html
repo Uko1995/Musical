@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>YouTube Video Search</title>
-    <link rel='stylesheet' href="{{ url_for('static', filename="css/search.css") }}">
+    <link rel='stylesheet' href="{{ url_for('static', filename='css/search.css') }}">
 </head>
 <body>
     <div class="container">
@@ -10,12 +10,18 @@
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="#">Login</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
         <div class="input">
             <form method="post" action="{{ url_for('search') }}">
-                <input class='enter' type="text" name="query" placeholder="Search for a video....." required>
-                <input class ="search_btn" type="submit" value="Search">
+                <input class='enter' type="text" name="query" placeholder="Search....." required><br>
+                <input class="rad" type="radio" id="video" name="content_type" value="Video">
+                <label for="video">Video</label><br>
+                <input class="rad" type="radio" id="playlist" name="content_type" value="Playlist">
+                <label for="playlist">Playlist</label><br>
+                <input class="rad" type="radio" id="channel" name="content_type" value="Channel">
+                <label for="channel">Channel</label><br>
+                <input class="search_btn" type="submit" value="Search">
             </form>
         </div>
         <section class="section">
